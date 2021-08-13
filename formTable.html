@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+</head>
+<style>
+    input:invalid{
+        border: 2px solid rgb(243, 61, 61);
+    }
+    input:valid{
+        border: 2px solid rgb(62, 207, 62);
+    }
+    .tableContainer{
+        display: none;
+    }
+</style>
+<body>
+    <div class="container bg-info p-3 mt-4">
+        <p class="text-center text-dark display-4"> Please fill up the form</p>
+        <form  onsubmit="setValue()" action="#" >
+            <div class="form-row  ">
+                <div class="col-md-4 ">
+                <label for="firstName">First Name</label>
+                <input type="text"  class="form-control" id="firstName" required minlength="6">
+               </div>
+               <div class="col-md-4 offset-md-2">
+                <label for="lastName">Last Name</label>
+                <input type="text"  class="form-control" id="lastName" required>
+               </div>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea   class="form-control" id="address" required></textarea>
+            </div>
+            <div class="form-row ">
+                <div class="col-md-3 ">
+                <label for="state">State</label>
+                <input type="text"  class="form-control" id="state" required>
+               </div>
+               <div class="col-md-3 offset-md-1">
+                <label for="country">Country</label>
+                <input type="text"  class="form-control" id="country" required>
+               </div>
+               <div class="col-md-3 offset-md-1">
+                <label for="pincode">Pincode</label>
+                <input type="text"   class="form-control" id="pincode" required>
+               </div>
+            </div>
+            <div class="form-group">
+                Select from the Menu:
+                <div class="mt-3">
+                   <div class="d-inline ml-3">
+                    <input type="checkbox" oninput="check1('briyani')"  value="briyani"  id="briyani">
+                    <label for="briyani">Briyani</label>
+                  </div>
+                   <div class="d-inline ml-2">
+                    <input type="checkbox"  oninput="check1('pizza')" value="pizza"  id="pizza">
+                    <label for="pizza">Pizza</label>
+                   </div>
+                   <div class="d-inline ml-3">
+                    <input type="checkbox" oninput="check1('burger')"  value="Burger"  id="burger">
+                    <label for="Burger">Burger</label>
+                </div>
+                    <div class="d-inline ml-3">
+                    <input type="checkbox" oninput="check1('shawarma')"  value="shawarma"  id="shawarma">
+                    <label for="shawarma">shawarma</label>
+                </div>
+                    <div class="d-inline ml-3">
+                    <input type="checkbox" oninput="check1('kebab')" value="kebab"  id="kebab">
+                    <label for="kebab">kebab</label>
+                </div>
+                <div> <button type="submit" class="btn btn-primary" >submit</button></div>
+                </div>
+               
+            </div>
+        </form>
+    </div>
+    <div class="container tableContainer">
+        <p class="text-center text-secondary display-4"> Your Order Details :</p>
+        <table class="table">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>State</th>
+                <th>Country</th>
+                <th>pincode</th>
+                <th>Food Items</th>
+            </tr>
+            <tr id=tableValue>
+            </tr>
+
+        </table>
+    </div>
+
+  <script>
+      let food=" ";
+      let firstName,lastName,address;
+      let state,country,pincode;
+
+      function setValue()
+      { 
+          firstName=document.getElementById("firstName").value;
+          lastName=document.getElementById("lastName").value;
+          address=document.getElementById("address").value;
+          state=document.getElementById("state").value;
+          country=document.getElementById("country").value;
+          pincode=document.getElementById("pincode").value;
+         
+          document.getElementById("firstName").value="";
+          document.getElementById("lastName").value="";
+          document.getElementById("address").value="";
+          document.getElementById("state").value="";
+          document.getElementById("country").value="";
+          document.getElementById("pincode").value="";
+
+          console.log(firstName,lastName,address,state,country,pincode)
+         table=document.querySelector(".tableContainer").style.display="block"
+          x=document.getElementById("tableValue")
+        x.innerHTML =`<td>${firstName}</td>
+        <td>${lastName}</td>
+        <td>${address}</td>
+        <td>${state}</td>
+        <td>${country}</td>
+        <td>${pincode}</td>
+        <td>${food}</td>`
+        
+      }
+      function check1(n)
+      {
+           b=document.getElementById(n)
+      if(b.checked==true)
+          {if(!(food.split(" ").includes(event.target.value)))
+              {
+                  food += event.target.value+" "
+                }
+      }
+      else{
+        food=food.replace(event.target.value,"")
+      }
+      console.log(food)
+    }
+   
+  </script>  
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+   crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+   crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+   crossorigin="anonymous"></script>
+</body>
+</html>
