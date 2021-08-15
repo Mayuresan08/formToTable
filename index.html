@@ -22,7 +22,7 @@
 <body>
     <div class="container bg-info p-3 mt-4">
         <p class="text-center text-dark display-4"> Please fill up the form</p>
-        <form  onsubmit="setValue()" action="#"  >
+        <form   action="#" >
             <div class="form-row  ">
                 <div class="col-md-4 ">
                 <label for="firstName">First Name</label>
@@ -74,7 +74,7 @@
                     <input type="checkbox" oninput="check1('kebab')" value="kebab"  id="kebab">
                     <label for="kebab">kebab</label>
                 </div>
-                <div> <button type="submit" class="btn btn-primary" >submit</button></div>
+                <div> <button type="button" class="btn btn-primary" onclick="setValue()">submit</button></div>
                 </div>
                
             </div>
@@ -118,6 +118,12 @@
           document.getElementById("state").value="";
           document.getElementById("country").value="";
           document.getElementById("pincode").value="";
+          document.getElementById("briyani").checked=false;
+          document.getElementById("pizza").checked=false;
+          document.getElementById("burger").checked=false;
+          document.getElementById("shawarma").checked=false;
+          document.getElementById("kebab").checked=false;
+          
 
           console.log(firstName,lastName,address,state,country,pincode)
          table=document.querySelector(".tableContainer").style.display="block"
