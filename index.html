@@ -22,7 +22,7 @@
 <body>
     <div class="container bg-info p-3 mt-4">
         <p class="text-center text-dark display-4"> Please fill up the form</p>
-        <form   action="#" >
+        <form id="form"  action="#" onsubmit="setValue(event)" >
             <div class="form-row  ">
                 <div class="col-md-4 ">
                 <label for="firstName">First Name</label>
@@ -74,7 +74,7 @@
                     <input type="checkbox" oninput="check1('kebab')" value="kebab"  id="kebab">
                     <label for="kebab">kebab</label>
                 </div>
-                <div> <button type="button" class="btn btn-primary" onclick="setValue()">submit</button></div>
+                <div> <button type="submit" class="btn btn-primary" >submit</button></div>
                 </div>
                
             </div>
@@ -102,9 +102,12 @@
       let food=" ";
       let firstName,lastName,address;
       let state,country,pincode;
+   
 
-      function setValue()
+      function setValue(event)
       { 
+              
+        event.preventDefault();
           firstName=document.getElementById("firstName").value;
           lastName=document.getElementById("lastName").value;
           address=document.getElementById("address").value;
